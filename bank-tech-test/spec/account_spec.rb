@@ -2,8 +2,11 @@ require 'account'
 
 describe Account do
 
+
   before do
     @account = Account.new
+    @date = Time.new(2017, 01, 23)
+    Time.stub(:now).and_return(@date)
   end
 
   it 'starts with a balance of zero' do
