@@ -1,21 +1,20 @@
 class Account
 
-  attr_reader :balance, :credit_transactions, :debit_transactions
+  attr_reader :balance, :transactions
 
   def initialize
     @balance = 0
-    @credit_transactions = []
-    @debit_transactions = []
+    @transactions = []
   end
 
   def deposit(amount)
     @balance += amount
-    @credit_transactions << [datestamp, amount]
+    @transactions << {"deposit" => [datestamp, amount]}
   end
 
   def withdraw(amount)
     @balance -= amount
-    @debit_transactions << [datestamp, amount]
+    @transactions << {"withdraw" => [datestamp, amount]}
   end
 
   private
