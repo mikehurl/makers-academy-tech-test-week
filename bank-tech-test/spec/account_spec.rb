@@ -5,8 +5,8 @@ describe Account do
 
   before do
     @account = Account.new
-    @date = Time.new(2017, 01, 23)
-    Time.stub(:now).and_return(@date)
+    date = Time.new(2017, 01, 23)
+    allow(Time).to receive(:now).and_return(date)
   end
 
   it 'starts with a balance of zero' do
@@ -21,8 +21,8 @@ describe Account do
       expect{ @account.deposit(500) }.to change{ @account.balance }.by 500
     end
 
-    it 'date-stamps the transaction' do
-      expect(@account.deposit(500)).to eq [500, "23/01/2017"]
+    it 'date-stamps the deposit transaction' do
+      expect(@account.deposit(500)).to eq [["23/01/2017", 500]]
     end
 
   end
@@ -33,7 +33,10 @@ describe Account do
 
     it 'can reduce the balance' do
       expect{ @account.withdraw(500) }.to change{ @account.balance }.by -500
+    end
 
+    it 'date-stamps the withdraw transaction' do
+      expect(@account.withdraw(500)).to eq [["23/01/2017", -500]]
     end
 
   end

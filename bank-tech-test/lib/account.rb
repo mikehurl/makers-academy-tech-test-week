@@ -9,13 +9,19 @@ class Account
   end
 
   def deposit(amount)
-    @transactions << @balance += amount
+    deposits = []
     date = Time.now.strftime "%d/%m/%Y"
-    @transactions << date
+    deposits << date
+    deposits << @balance += amount
+    @transactions << deposits
   end
 
   def withdraw(amount)
-    @balance -= amount
+    withdrawals = []
+    date = Time.now.strftime "%d/%m/%Y"
+    withdrawals << date
+    withdrawals << @balance -= amount
+    @transactions << withdrawals
   end
 
 end
