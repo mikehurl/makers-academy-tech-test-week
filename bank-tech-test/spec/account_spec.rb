@@ -36,7 +36,7 @@ describe Account do
     end
 
     it 'date-stamps the withdraw transaction' do
-      expect(@account.withdraw(500)).to eq [["23/01/2017", -500]]
+      expect(@account.withdraw(500)).to eq [["23/01/2017", 500]]
     end
 
   end

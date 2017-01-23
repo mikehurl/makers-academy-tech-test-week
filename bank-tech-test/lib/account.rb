@@ -9,11 +9,17 @@ class Account
   end
 
   def deposit(amount)
-    @transactions << [datestamp, @balance += amount]
+    @balance += amount
+    @transactions << [datestamp, amount]
   end
 
   def withdraw(amount)
-    @transactions << [datestamp, @balance -= amount]
+    @balance -= amount
+    @transactions << [datestamp, amount]
+  end
+
+  def print_statement
+
   end
 
 private
