@@ -1,28 +1,24 @@
 class Account
 
-  attr_reader :balance
-  attr_reader :transactions
+  attr_reader :balance, :credit_transactions, :debit_transactions
 
   def initialize
     @balance = 0
-    @transactions = []
+    @credit_transactions = []
+    @debit_transactions = []
   end
 
   def deposit(amount)
     @balance += amount
-    @transactions << [datestamp, amount]
+    @credit_transactions << [datestamp, amount]
   end
 
   def withdraw(amount)
     @balance -= amount
-    @transactions << [datestamp, amount]
+    @debit_transactions << [datestamp, amount]
   end
 
-  def print_statement
-
-  end
-
-private
+  private
 
   def datestamp
     Time.now.strftime "%d/%m/%Y"

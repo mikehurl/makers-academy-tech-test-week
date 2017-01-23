@@ -2,12 +2,11 @@ require 'account'
 
 describe Account do
 
-
   before do
     @account = Account.new
-    date = Time.new(2017, 01, 23)
-    allow(Time).to receive(:now).and_return(date)
   end
+
+  let!(:time) {Time.new(2017, 01, 23)}
 
   it 'starts with a balance of zero' do
     expect(@account.balance).to eq 0
