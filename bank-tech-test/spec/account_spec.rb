@@ -18,6 +18,10 @@ describe Account do
       expect{ @account.deposit(500) }.to change{ @account.balance }.by 500
     end
 
+    it 'date-stamps the transaction' do
+      expect(@account.deposit(500)).to eq [500, "23/01/2017"]
+    end
+
   end
 
   describe '#withdraw' do
