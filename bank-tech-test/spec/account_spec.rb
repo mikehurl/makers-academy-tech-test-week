@@ -20,12 +20,12 @@ describe Account do
 
   end
 
-  describe '#withdrawal' do
+  describe '#withdraw' do
 
-    it { is_expected.to respond_to(:withdrawal).with(1).argument }
+    it { is_expected.to respond_to(:withdraw).with(1).argument }
 
     it 'can reduce the balance' do
-      expect{ @account.withdrawal(500) }.to change{ @account.balance }.by -500
+      expect{ @account.withdraw(500) }.to change{ @account.balance }.by -500
 
     end
 
