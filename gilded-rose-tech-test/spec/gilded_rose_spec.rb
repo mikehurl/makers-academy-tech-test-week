@@ -3,7 +3,7 @@ require 'gilded_rose'
 describe GildedRose do
 
   before do
-    @items = [Item.new("foo", 0, 0), Item.new("test item", 1, 1), Item.new("test item", 0, 2), Item.new("Aged Brie", 3, 3), Item.new("Aged Brie", 1, 50), Item.new("Sulfuras, Hand of Ragnaros", 5, 5)]
+    @items = [Item.new("foo", 0, 0), Item.new("test item", 1, 1), Item.new("test item", 0, 2), Item.new("Aged Brie", 3, 3), Item.new("Aged Brie", 1, 50), Item.new("Sulfuras, Hand of Ragnaros", 5, 5), Item.new("Backstage passes to a TAFKAL80ETC concert", 12, 5)]
     GildedRose.new(@items).update_quality()
   end
 
@@ -36,6 +36,10 @@ describe GildedRose do
 
     it 'does not decrease the value of the "Sulfuras" item' do
       expect(@items[5].to_s).to eq 'Sulfuras, Hand of Ragnaros, 5, 5'
+    end
+
+    it 'increases the quality of "Backstage passes" by one when the sell_in value is greater than or equal to eleven' do
+      expect(@items[6].to_s).to eq 'Backstage passes to a TAFKAL80ETC concert, 11, 6'
     end
 
   end
