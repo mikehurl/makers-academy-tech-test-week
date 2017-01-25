@@ -3,7 +3,7 @@ require 'gilded_rose'
 describe GildedRose do
 
   before do
-    @items = [Item.new("foo", 0, 0), Item.new("test item", 1, 1), Item.new("test item", 0, 2)]
+    @items = [Item.new("foo", 0, 0), Item.new("test item", 1, 1), Item.new("test item", 0, 2), Item.new("Aged Brie", 3, 3)]
     GildedRose.new(@items).update_quality()
   end
 
@@ -19,6 +19,15 @@ describe GildedRose do
 
     it 'degrades the quality twice as fast once the sell by date has passed, which is when the sell_in value is zero' do
       expect(@items[2].to_s).to eq 'test item, -1, 0'
+    end
+
+    it 'does not allow the quality value of an item to be a negative value' do
+      GildedRose.new(@items).update_quality()
+      expect(@items[0].to_s).to eq 'foo, -2, 0'
+    end
+
+    it 'increases the quality of "Aged Brie" when the sell_in value decreases' do
+      expect(@items[3].to_s).to eq 'Aged Brie, 2, 4'
     end
 
   end
