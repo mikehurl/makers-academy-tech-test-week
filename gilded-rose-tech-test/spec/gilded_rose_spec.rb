@@ -3,7 +3,7 @@ require 'gilded_rose'
 describe GildedRose do
 
   before do
-    @items = [Item.new("foo", 0, 0), Item.new("test item", 1, 1), Item.new("test item", 0, 2), Item.new("Aged Brie", 3, 3), Item.new("Aged Brie", 1, 50)]
+    @items = [Item.new("foo", 0, 0), Item.new("test item", 1, 1), Item.new("test item", 0, 2), Item.new("Aged Brie", 3, 3), Item.new("Aged Brie", 1, 50), Item.new("Sulfuras, Hand of Ragnaros", 5, 5)]
     GildedRose.new(@items).update_quality()
   end
 
@@ -32,6 +32,10 @@ describe GildedRose do
 
     it 'does not allow an item to have a quality value of more than 50' do
       expect(@items[4].to_s).to eq 'Aged Brie, 0, 50'
+    end
+
+    it 'does not decrease the value of the "Sulfuras" item' do
+      expect(@items[5].to_s).to eq 'Sulfuras, Hand of Ragnaros, 5, 5'
     end
 
   end
