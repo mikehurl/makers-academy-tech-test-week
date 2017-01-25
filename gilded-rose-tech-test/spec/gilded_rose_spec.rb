@@ -51,6 +51,11 @@ describe GildedRose do
       expect(@items[7].to_s).to eq 'Backstage passes to a TAFKAL80ETC concert, 4, 8'
     end
 
+    it 'decreases the quality of "Backstage passes" to zero when the sell_in value is zero' do
+      5.times{ GildedRose.new(@items).update_quality() }
+      expect(@items[7].to_s).to eq 'Backstage passes to a TAFKAL80ETC concert, -1, 0'
+    end
+
   end
 
 end
