@@ -20,13 +20,21 @@ date       || credit || debit   || balance
 ```
 
 ### Architectural approach to the project
-TO FOLLOW
+Test-driven development using RSpec for testing and Ruby for coding.
 
-### How to download and run the code
-TO FOLLOW
+### How to download the code
+`git clone https://github.com/mikehurl/makers-academy-tech-test-week.git`
 
 ### How to run the code
-TO FOLLOW
+- `cd makers-academy-test-tech-week/bank-tech-test`
+- `bundle`
+- `pry` or `irb`
+- `require './lib/account'`
+- `account = Account.new`
+- Then you can call `account.deposit(amount)`, `account.withdraw(amount)` and `account.print_statement`
+
+### Areas for improvement
+The code should be refactored into three or four classes in total in order to utilise single responsibility properly.
 
 ### User stories I generated from the specification and acceptance criteria
 
