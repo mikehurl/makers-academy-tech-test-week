@@ -16,6 +16,12 @@ describe GildedRose do
       expect(items[0].to_s).to eq 'test item, 0, 0'
     end
 
+    it 'degrades the quality twice as fast once the sell by date has passed, which is when the sell_in value is zero' do
+      items = [Item.new("test item", 0, 2)]
+      GildedRose.new(items).update_quality()
+      expect(items[0].to_s).to eq 'test item, -1, 0'
+    end
+
   end
 
 end
