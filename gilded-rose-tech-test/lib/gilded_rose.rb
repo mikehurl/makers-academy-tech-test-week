@@ -29,9 +29,9 @@ class GildedRose
           end
         end
       end
-      if item.name != "Sulfuras, Hand of Ragnaros"
-        item.sell_in = item.sell_in - 1
-      end
+
+      decrease_sell_in_value(item)
+
       if item.sell_in < 0
         decrease_quality_of_backstage_pass(item)
         if item.name != "Aged Brie"
@@ -46,6 +46,7 @@ class GildedRose
           increase_item_values(item)
         end
       end
+
     end
   end
 end
@@ -59,6 +60,12 @@ end
 def decrease_quality_of_backstage_pass(item)
   if item.name == "Backstage passes to a TAFKAL80ETC concert"
     item.quality = 0
+  end
+end
+
+def decrease_sell_in_value(item)
+  if item.name != "Sulfuras, Hand of Ragnaros"
+    item.sell_in -= 1
   end
 end
 
